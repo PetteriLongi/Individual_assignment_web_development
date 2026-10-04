@@ -27,10 +27,10 @@
         <div class="account-actions" data-logged-in hidden>
           <img
             class="profile-image profile-image-header"
+            src="images/placeholder_image.png"
             data-profile-image
             alt=""
-            hidden
-          />
+            hidden />
           <span class="username" data-username></span>
           <a href="#profile" class="header-button" data-language-text="profile"
             >Profile</a
@@ -44,16 +44,14 @@
             type="button"
             class="language-button"
             data-language="en"
-            aria-pressed="true"
-          >
+            aria-pressed="true">
             EN
           </button>
           <button
             type="button"
             class="language-button"
             data-language="fi"
-            aria-pressed="false"
-          >
+            aria-pressed="false">
             FI
           </button>
         </div>
@@ -87,16 +85,14 @@
             type="button"
             class="toggle-button"
             data-menu-type="daily"
-            aria-pressed="true"
-          >
+            aria-pressed="true">
             <span data-language-text="dailyMenu">Daily menu</span>
           </button>
           <button
             type="button"
             class="toggle-button"
             data-menu-type="weekly"
-            aria-pressed="false"
-          >
+            aria-pressed="false">
             <span data-language-text="weeklyMenu">Weekly menu</span>
           </button>
           <div class="menu-favourite" data-menu-favourite></div>
@@ -125,8 +121,7 @@
               type="search"
               placeholder="Search Helsinki, Tampere..."
               data-language-placeholder="searchPlaceholder"
-              data-search
-            />
+              data-search />
           </div>
           <div class="toolbar-field">
             <label for="city-filter" data-language-text="city">City</label>
@@ -172,8 +167,7 @@
             name="username"
             type="text"
             autocomplete="username"
-            required
-          />
+            required />
           <label for="signin-password" data-language-text="password"
             >Password</label
           >
@@ -182,8 +176,7 @@
             name="password"
             type="password"
             autocomplete="current-password"
-            required
-          />
+            required />
           <p class="form-message" data-form-message role="alert"></p>
           <button type="submit" data-language-text="signInTitle">
             Sign In
@@ -198,13 +191,13 @@
         <a href="#" class="modal-close" aria-label="Close profile">&times;</a>
         <h2 data-language-text="profileTitle">Your profile</h2>
         <img
+          src="images/placeholder_image.png"
           class="profile-image profile-image-preview"
           data-profile-preview
           alt="Your profile picture"
           width="128"
           height="128"
-          hidden
-        />
+          hidden />
         <form id="profile-form">
           <label for="profile-username" data-language-text="username"
             >Username</label
@@ -224,8 +217,7 @@
           <input
             id="profile-password-confirm"
             name="confirmPassword"
-            type="password"
-          />
+            type="password" />
           <label for="profile-picture" data-language-text="profilePicture"
             >Profile picture</label
           >
@@ -233,8 +225,7 @@
             id="profile-picture"
             name="avatar"
             type="file"
-            accept="image/*"
-          />
+            accept="image/*" />
           <p class="form-message" data-form-message role="alert"></p>
           <button type="submit" data-language-text="saveChanges">
             Save changes
@@ -259,8 +250,7 @@
             name="username"
             type="text"
             autocomplete="username"
-            required
-          />
+            required />
           <p class="field-hint" data-username-message></p>
           <label for="signup-email" data-language-text="email">Email</label>
           <input
@@ -268,8 +258,7 @@
             name="email"
             type="email"
             autocomplete="email"
-            required
-          />
+            required />
           <label for="signup-password" data-language-text="password"
             >Password</label
           >
@@ -278,8 +267,7 @@
             name="password"
             type="password"
             autocomplete="new-password"
-            required
-          />
+            required />
           <label
             for="signup-password-confirm"
             data-language-text="confirmPassword"
@@ -290,8 +278,7 @@
             name="confirmPassword"
             type="password"
             autocomplete="new-password"
-            required
-          />
+            required />
           <p class="form-message" data-form-message role="alert"></p>
           <button type="submit" data-language-text="signUp">Sign Up</button>
         </form>

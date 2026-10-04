@@ -48,9 +48,11 @@ const getAvatarUrl = (user) => {
 
 const updateProfileImages = (user) => {
   const avatarUrl = getAvatarUrl(user);
-  profileImage.src = avatarUrl;
+  if (avatarUrl) {
+    profileImage.src = avatarUrl;
+    profilePreview.src = avatarUrl;
+  }
   profileImage.hidden = !avatarUrl;
-  profilePreview.src = avatarUrl;
   profilePreview.hidden = !avatarUrl;
 };
 
