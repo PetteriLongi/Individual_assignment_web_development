@@ -63,11 +63,9 @@ Individual_assignment_web/
 │   └── restaurants.js
 ├── images/
 │   └── placeholder_image.png
-└── test/
 ```
 
-The `test` folder contains separate test or development files and is not
-required for running the main application.
+
 
 ## Notes
 
