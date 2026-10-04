@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Table</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="./" aria-label="Campus Table home" data-nav>
+        <span>CAMPUS <em>TABLE</em></span>
+      </a>
+      <nav class="header-actions" aria-label="Main nav">
+        <div class="account-actions" data-logged-out>
+          <a href="#signin" class="header-button" data-language-text="signIn"
+            >Sign in</a
+          >
+          <a
+            href="#signup"
+            class="header-button primary"
+            data-language-text="signUp"
+            >Sign up</a
+          >
+        </div>
+        <div class="account-actions" data-logged-in hidden>
+          <img
+            class="profile-image profile-image-header"
+            data-profile-image
+            alt=""
+            hidden
+          />
+          <span class="username" data-username></span>
+          <a href="#profile" class="header-button" data-language-text="profile"
+            >Profile</a
+          >
+          <button type="button" class="header-button" data-logout>
+            <span data-language-text="logOut">Log out</span>
+          </button>
+        </div>
+        <div class="language" role="group" aria-label="Language Selector">
+          <button
+            type="button"
+            class="language-button"
+            data-language="en"
+            aria-pressed="true"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            class="language-button"
+            data-language="fi"
+            aria-pressed="false"
+          >
+            FI
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Find your<br /><em>next table</em></h1>
+        <p class="hero-description">
+          Explore student restaurants across Finland.
+        </p>
+      </section>
+
+      <!-- Menu content is filled in by menu.js. -->
+      <section class="menu" id="menu" aria-labelledby="menu-title" hidden>
+        <a
+          href="./"
+          class="back-button"
+          data-nav
+          data-language-text="allRestaurants"
+          >All restaurants</a
+        >
+        <div class="selected">
+          <h2 id="menu-title" data-menu-title></h2>
+          <span data-menu-address></span>
+        </div>
+
+        <div class="menu-toggle" role="group" aria-label="Menu type">
+          <button
+            type="button"
+            class="toggle-button"
+            data-menu-type="daily"
+            aria-pressed="true"
+          >
+            <span data-language-text="dailyMenu">Daily menu</span>
+          </button>
+          <button
+            type="button"
+            class="toggle-button"
+            data-menu-type="weekly"
+            aria-pressed="false"
+          >
+            <span data-language-text="weeklyMenu">Weekly menu</span>
+          </button>
+          <div class="menu-favourite" data-menu-favourite></div>
+        </div>
+
+        <div data-menu-content aria-live="polite"></div>
+      </section>
+
+      <section class="restaurant-list" aria-labelledby="restaurant-list-title">
+        <div class="restaurant-list-header">
+          <h2 id="restaurant-list-title" data-language-text="chooseRestaurant">
+            Choose a restaurant
+          </h2>
+        </div>
+        <p class="restaurant-list-count" aria-live="polite">
+          <span data-restaurant-count></span>
+          <span data-language-text="placesToEat">places to eat</span>
+        </p>
+        <div class="toolbar">
+          <div class="toolbar-field toolbar-search">
+            <label for="search" data-language-text="searchLabel"
+              >Search by name or city</label
+            >
+            <input
+              id="search"
+              type="search"
+              placeholder="Search Helsinki, Tampere..."
+              data-language-placeholder="searchPlaceholder"
+              data-search
+            />
+          </div>
+          <div class="toolbar-field">
+            <label for="city-filter" data-language-text="city">City</label>
+            <select id="city-filter" data-filter-city>
+              <option value="" data-language-text="allCities">
+                All cities
+              </option>
+            </select>
+          </div>
+          <div class="toolbar-field">
+            <label for="company-filter" data-language-text="provider"
+              >Provider</label
+            >
+            <select id="company-filter" data-filter-company>
+              <option value="" data-language-text="allProviders">
+                All providers
+              </option>
+            </select>
+          </div>
+          <label class="toolbar-checkbox" data-favourites-field hidden>
+            <input type="checkbox" data-filter-favourites />
+            <span data-language-text="favouritesOnly">Favourites only</span>
+          </label>
+        </div>
+        <!-- Restaurant cards are rendered by restaurants.js. -->
+        <div class="restaurant-grid"></div>
+      </section>
+    </main>
+
+    <!-- Sign-in modal -->
+    <div class="modal" id="signin">
+      <div class="modal-content">
+        <a href="#" class="modal-close" aria-label="Close sign-in dialog"
+          >&times;</a
+        >
+        <h2 data-language-text="signInTitle">Sign In</h2>
+        <form id="signin-form">
+          <label for="signin-username" data-language-text="username"
+            >Username</label
+          >
+          <input
+            id="signin-username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            required
+          />
+          <label for="signin-password" data-language-text="password"
+            >Password</label
+          >
+          <input
+            id="signin-password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <p class="form-message" data-form-message role="alert"></p>
+          <button type="submit" data-language-text="signInTitle">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Profile modal -->
+    <div class="modal" id="profile">
+      <div class="modal-content">
+        <a href="#" class="modal-close" aria-label="Close profile">&times;</a>
+        <h2 data-language-text="profileTitle">Your profile</h2>
+        <img
+          class="profile-image profile-image-preview"
+          data-profile-preview
+          alt="Your profile picture"
+          width="128"
+          height="128"
+          hidden
+        />
+        <form id="profile-form">
+          <label for="profile-username" data-language-text="username"
+            >Username</label
+          >
+          <input id="profile-username" name="username" type="text" required />
+          <label for="profile-email" data-language-text="email">Email</label>
+          <input id="profile-email" name="email" type="email" required />
+          <label for="profile-password" data-language-text="newPassword"
+            >New password</label
+          >
+          <input id="profile-password" name="password" type="password" />
+          <label
+            for="profile-password-confirm"
+            data-language-text="confirmPassword"
+            >Confirm new password</label
+          >
+          <input
+            id="profile-password-confirm"
+            name="confirmPassword"
+            type="password"
+          />
+          <label for="profile-picture" data-language-text="profilePicture"
+            >Profile picture</label
+          >
+          <input
+            id="profile-picture"
+            name="avatar"
+            type="file"
+            accept="image/*"
+          />
+          <p class="form-message" data-form-message role="alert"></p>
+          <button type="submit" data-language-text="saveChanges">
+            Save changes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sign-up modal -->
+    <div class="modal" id="signup">
+      <div class="modal-content">
+        <a href="#" class="modal-close" aria-label="Close sign-up dialog"
+          >&times;</a
+        >
+        <h2 data-language-text="signUp">Sign Up</h2>
+        <form id="signup-form">
+          <label for="signup-username" data-language-text="username"
+            >Username</label
+          >
+          <input
+            id="signup-username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            required
+          />
+          <p class="field-hint" data-username-message></p>
+          <label for="signup-email" data-language-text="email">Email</label>
+          <input
+            id="signup-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <label for="signup-password" data-language-text="password"
+            >Password</label
+          >
+          <input
+            id="signup-password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+          <label
+            for="signup-password-confirm"
+            data-language-text="confirmPassword"
+            >Confirm password</label
+          >
+          <input
+            id="signup-password-confirm"
+            name="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+          <p class="form-message" data-form-message role="alert"></p>
+          <button type="submit" data-language-text="signUp">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

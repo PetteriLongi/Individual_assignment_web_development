@@ -1,0 +1,496 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #c62828;
+  --accent-dark: #8e1c1c;
+  --favourite: #2e7d32;
+  --favourite-dark: #1b5e20;
+  --text: #222;
+  --text-muted: #666;
+  --bg: #f5f5f5;
+  --card: #fff;
+  --border: #ddd;
+  --radius: 6px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Shared button styles */
+.header-button,
+.language-button,
+.toggle-button,
+.favourite-button,
+.modal-content button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header-button:hover,
+.language-button:hover,
+.toggle-button:hover,
+.favourite-button:hover,
+.back-button:hover,
+.modal-close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Primary and active states */
+.header-button.primary,
+.language-button[aria-pressed="true"],
+.toggle-button[aria-pressed="true"],
+.modal-content button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.header-button.primary:hover,
+.language-button[aria-pressed="true"]:hover,
+.toggle-button[aria-pressed="true"]:hover,
+.modal-content button:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+/* Favourite buttons use a separate colour */
+.favourite-button.is-favourite {
+  background: var(--favourite);
+  border-color: var(--favourite);
+  color: #fff;
+}
+
+.favourite-button.is-favourite:hover {
+  background: var(--favourite-dark);
+  border-color: var(--favourite-dark);
+  color: #fff;
+}
+
+/* Header layout */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo em {
+  color: var(--accent);
+}
+
+.header-actions,
+.account-actions,
+.language {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-actions {
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Hero section */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1rem 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 em {
+  color: var(--accent);
+}
+
+.hero-description {
+  color: var(--text-muted);
+}
+
+/* Restaurant list and filters */
+.restaurant-list {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.restaurant-list-header h2 {
+  font-size: 2rem;
+}
+
+.restaurant-list-count {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.toolbar-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.toolbar-search {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.toolbar label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.toolbar-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+}
+
+.toolbar input[type="search"],
+.toolbar select,
+.modal-content input {
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+}
+
+.restaurant-grid,
+.menu-items-daily,
+.menu-items-weekly {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Restaurant and menu cards */
+.restaurant-card,
+.menu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.restaurant-card:hover {
+  border-color: var(--accent);
+}
+
+.restaurant-card.favourite {
+  border-color: var(--favourite);
+  box-shadow: 0 0 0 1px var(--favourite);
+}
+
+.restaurant-link {
+  display: block;
+}
+
+.favourite-button {
+  margin: 0 1rem 1rem;
+}
+
+.restaurant-image img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.restaurant-card-body,
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.restaurant-card-body {
+  padding: 1rem;
+}
+
+.menu-card {
+  padding: 1rem;
+}
+
+.restaurant-card-body b {
+  font-size: 1.1rem;
+}
+
+.restaurant-index,
+.restaurant-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.restaurant-meta {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Menu view */
+.menu {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.back-button::before {
+  content: "← ";
+}
+
+.selected {
+  padding: 1rem;
+  background: var(--bg);
+  border-left: 4px solid var(--accent);
+}
+
+.selected h2 {
+  font-size: 1.5rem;
+}
+
+.selected span {
+  display: block;
+  color: var(--text-muted);
+}
+
+.menu-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.menu-favourite {
+  margin-left: auto;
+}
+
+.menu-favourite .favourite-button {
+  margin: 0;
+}
+
+.menu-day {
+  margin-bottom: 1.5rem;
+}
+
+.menu-day h3 {
+  margin-bottom: 0.5rem;
+}
+
+.menu-message {
+  color: var(--text-muted);
+}
+
+.menu-card h3,
+.menu-card h4 {
+  font-size: 1.1rem;
+}
+
+.menu-price {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.dietary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.dietary-info {
+  padding: 0.1rem 0.6rem;
+  font-size: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* Sign-in and sign-up modals */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal:target {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  width: min(400px, 100%);
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--card);
+  border-radius: var(--radius);
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-content label {
+  font-weight: 600;
+}
+
+.form-message,
+.field-hint {
+  font-size: 0.85rem;
+}
+
+.form-message {
+  color: var(--accent);
+}
+
+.field-hint {
+  color: var(--text-muted);
+}
+
+.form-message:empty,
+.field-hint:empty {
+  display: none;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.profile-image {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg);
+}
+
+.profile-image-header {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+#profile .profile-image-preview {
+  width: 4rem;
+  height: 4rem;
+  max-width: 4rem;
+  max-height: 4rem;
+  margin: 0 auto 0.5rem;
+}
+
+.modal-close {
+  position: sticky;
+  top: -0.5rem;
+  z-index: 1;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  padding: 0 0.25rem;
+  font-size: 2rem;
+  line-height: 1;
+  background: var(--card);
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .modal-content {
+    max-height: calc(100vh - 1rem);
+    max-height: calc(100dvh - 1rem);
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
