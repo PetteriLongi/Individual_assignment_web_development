@@ -74,3 +74,5 @@ required for running the main application.
 - Login tokens are stored in the browser's local storage.
 - Favourite restaurants are stored locally for each user.
 - Do not commit passwords, tokens, or `.env` files.
+- For accessibility I added a focus restoring to restaurant.js and menu.js so a keyboard user wont lose their place when rerendered.
+- A request guard to menu.js so quick switching between menus cant cause older server response to overwrite new ones
